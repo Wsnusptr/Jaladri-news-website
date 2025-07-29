@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2020",
     "lib": [
       "dom",
       "dom.iterable",
@@ -13,43 +13,29 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
       "@repo/db": [
-        "../../packages/db/index.ts"
+        "packages/db"
       ],
-      "@repo/db/*": [
-        "../../packages/db/*"
+      "@repo/ui": [
+        "packages/ui"
       ],
-      "ui": [
-        "../../packages/ui/index.ts"
-      ],
-      "ui/*": [
-        "../../packages/ui/*"
+      "@repo/web": [
+        "packages/web"
       ]
     }
   },
   "include": [
     "types",
     "next-env.d.ts",
-    "types/next-auth.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "./.next/types/**/*.ts"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"
