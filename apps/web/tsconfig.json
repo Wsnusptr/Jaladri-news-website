@@ -27,7 +27,11 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@repo/db": ["../../packages/db/index.ts"],
+      "@repo/db/*": ["../../packages/db/*"],
+      "ui": ["../../packages/ui/index.ts"],
+      "ui/*": ["../../packages/ui/*"]
     }
   },
   "include": [

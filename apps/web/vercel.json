@@ -1,11 +1,9 @@
 {
-    "version": 2,
-    "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm prisma:generate && pnpm build:web",
-    "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-    "outputDirectory": ".next",
-    "functions": {
-        "app/api/**/*.ts": {
-            "maxDuration": 30
-        }
-    }
+  "version": 2,
+  "framework": "nextjs",
+  "env": {
+    "DATABASE_URL": "postgresql://postgres:Jaladri202513090312345@db.tdhmkccvahnxlrzyswpc.supabase.co:5432/postgres",
+    "NEXT_PUBLIC_API_URL": "https://web-iayoqflbz-wjokis-projects.vercel.app/api",
+    "NODE_ENV": "production"
+  }
 }
