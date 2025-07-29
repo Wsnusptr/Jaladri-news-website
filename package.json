@@ -1,0 +1,43 @@
+{
+  "name": "jaladri-news-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Jaladri News Website",
+  "scripts": {
+    "dev": "dotenv -- pnpm --parallel --filter \"./apps/*\" dev",
+    "web": "pnpm --filter web dev",
+    "cms": "pnpm --filter cms dev",
+    "build": "pnpm prisma:generate && pnpm --filter web build",
+    "build:web": "pnpm prisma:generate && pnpm --filter web build",
+    "build:cms": "pnpm prisma:generate && pnpm --filter cms build",
+    "start": "pnpm --filter web start",
+    "start:web": "pnpm --filter web start",
+    "start:cms": "pnpm --filter cms start",
+    "lint": "pnpm --parallel --filter \"./apps/*\" lint",
+    "prisma:generate": "dotenv -- pnpm --filter @repo/db db:generate",
+    "prisma:migrate": "dotenv -- pnpm --filter @repo/db db:migrate",
+    "prisma:seed": "dotenv -- pnpm --filter @repo/db db:seed",
+    "prisma:reset": "dotenv -- pnpm --filter @repo/db exec prisma migrate reset",
+    "db:studio": "dotenv -- pnpm --filter @repo/db exec prisma studio",
+    "postinstall": "pnpm prisma:generate",
+    "vercel-build": "pnpm prisma:generate && pnpm build:web",
+    "clean": "rimraf node_modules/.cache .next .turbo",
+    "clean:all": "rimraf node_modules/.cache .next .turbo **/node_modules"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.4",
+    "prisma": "^6.12.0",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "turbo": "latest",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

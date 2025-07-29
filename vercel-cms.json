@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "jaladri-news-cms",
+  "buildCommand": "pnpm prisma:generate && pnpm build:cms",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "apps/cms/.next",
+  "framework": "nextjs",
+  "rootDirectory": "./",
+  "functions": {
+    "apps/cms/app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "DIRECT_URL": "@direct_url",
+    "NEXTAUTH_URL": "@nextauth_url_cms",
+    "NEXTAUTH_SECRET": "@nextauth_secret",
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "@database_url",
+      "DIRECT_URL": "@direct_url"
+    }
+  }
+}
