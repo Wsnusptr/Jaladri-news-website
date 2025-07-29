@@ -1,8 +1,8 @@
 {
     "version": 2,
-    "framework": "nextjs",
-    "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm prisma:generate && cd apps/web && npm run build",
+    "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm prisma:generate && pnpm build:web",
     "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+    "outputDirectory": ".next",
     "functions": {
         "app/api/**/*.ts": {
             "maxDuration": 30
