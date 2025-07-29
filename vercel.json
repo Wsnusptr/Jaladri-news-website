@@ -1,13 +1,7 @@
 {
   "version": 2,
   "buildCommand": "pnpm vercel-build",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": "nextjs",
-  "outputDirectory": "apps/web/.next",
-  "env": {
-    "DATABASE_URL": "@database-url",
-    "NEXTAUTH_SECRET": "@nextauth-secret",
-    "NEXTAUTH_URL": "@nextauth-url",
-    "NODE_ENV": "production"
-  }
+  "outputDirectory": "apps/web/.next"
 }

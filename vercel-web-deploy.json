@@ -1,9 +1,9 @@
 {
-  "name": "jaladri-news-web",
-  "buildCommand": "pnpm turbo run build --filter=web...",
-  "outputDirectory": "apps/web/.next",
+  "version": 2,
+  "buildCommand": "cd ../../ && pnpm prisma:generate && pnpm turbo run build --filter=web...",
+  "installCommand": "cd ../../ && pnpm install",
   "framework": "nextjs",
-  "regions": ["sin1"],
+  "outputDirectory": ".next",
   "env": {
     "DATABASE_URL": "postgresql://postgres:Jaladri202513090312345@db.tdhmkccvahnxlrzyswpc.supabase.co:5432/postgres",
     "NEXT_PUBLIC_API_URL": "https://jaladri-news-website.vercel.app/api",
