@@ -2,3 +2,6 @@
 export const baseAuthOptions = {
     // ...isi konfigurasi asli di sini...
 };
+
+const authConfig = {};
+export default authConfig;

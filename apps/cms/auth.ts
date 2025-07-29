@@ -1,10 +1,10 @@
 // apps/cms/auth.ts
 import NextAuth from "next-auth"
-import { baseAuthOptions } from "./auth-config"
+import authConfig from './auth-config';
 import type { NextAuthConfig } from "next-auth"
 
 const authOptions = {
-  ...baseAuthOptions,
+  ...authConfig,
   pages: {
     signIn: "/login",
     error: "/unauthorized"

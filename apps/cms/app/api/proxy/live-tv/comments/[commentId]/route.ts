@@ -14,19 +14,19 @@ export async function DELETE(
     }
 
     const { commentId } = await params;
-    
+
     const response = await fetch(`${WEB_API_URL}/live-tv/comments/${commentId}`, {
       method: 'DELETE',
       headers: {
         'Cookie': request.headers.get('cookie') || '',
       }
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       return NextResponse.json(error, { status: response.status });
     }
-    
+
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
@@ -37,3 +37,14 @@ export async function DELETE(
     );
   }
 }
+
+// Pastikan targetUrl sudah didefinisikan, misal:
+const targetUrl = "https://api.example.com/comments"; // Ganti sesuai kebutuhan
+
+const apiResponse = await fetch(targetUrl, { /* ...existing code... */ });
+const data = await apiResponse.json();
+// Perbaiki penggunaan map/forEach, misal:
+const comments = Array.isArray(data) ? data.map(item => {
+  // ...proses item...
+  return item;
+}) : [];

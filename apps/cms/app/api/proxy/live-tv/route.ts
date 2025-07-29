@@ -19,7 +19,7 @@ export async function OPTIONS() {
 export async function GET() {
   try {
     const targetUrl = `${WEB_APP_URL}/api/live-tv`;
-    
+
     console.log('Proxying GET request to:', targetUrl);
 
     const apiResponse = await fetch(targetUrl, {
@@ -35,8 +35,13 @@ export async function GET() {
       return NextResponse.json({ error: "Gagal mengambil data live TV" }, { status: apiResponse.status, headers: corsHeaders });
     }
 
-    const responseData = await apiResponse.json();
-    return NextResponse.json(responseData, { headers: corsHeaders });
+    const data = await apiResponse.json();
+    const liveTVs = Array.isArray(data) ? data.map(item => {
+      // ...proses item...
+      return item;
+    }) : [];
+
+    return NextResponse.json(liveTVs, { headers: corsHeaders });
   } catch (error) {
     console.error("GET proxy error:", error);
     return NextResponse.json({ error: "Gagal mengambil data live TV" }, { status: 500, headers: corsHeaders });

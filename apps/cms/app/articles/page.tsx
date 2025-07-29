@@ -48,7 +48,7 @@ export default function ArticlesPage() {
         setError('');
         try {
             // Hanya ambil artikel yang sudah dipublikasikan untuk manajemen
-            const response = await fetch('/api/proxy/articles?status=PUBLISHED'); 
+            const response = await fetch('/api/proxy/articles?status=PUBLISHED');
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`Gagal memuat artikel: ${errorText}`);
@@ -104,7 +104,7 @@ export default function ArticlesPage() {
             if (!response.ok) throw new Error('Gagal mengubah penempatan artikel');
             // Muat ulang data setelah berhasil mengubah
             loadArticles();
-            
+
             const placementNames = {
                 'hot': 'Hot News',
                 'slider': 'Slider Utama',
@@ -119,8 +119,8 @@ export default function ArticlesPage() {
 
     const isAdmin = (session?.user as any)?.role === 'ADMIN';
     // Filter artikel: Admin melihat semua, User hanya melihat tulisan sendiri
-    const articlesToShow = isAdmin 
-        ? articles 
+    const articlesToShow = isAdmin
+        ? articles
         : articles.filter(a => a.authorId === session?.user?.id);
 
     return (
@@ -134,7 +134,7 @@ export default function ArticlesPage() {
                     + Tambah Artikel Baru
                 </Link>
             </div>
-            
+
             {error && <div className="bg-red-100 text-red-700 p-3 rounded text-sm mb-4">{error}</div>}
 
             {isLoading ? (
@@ -153,7 +153,7 @@ export default function ArticlesPage() {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {articlesToShow.map((article) => (
+                            {Array.isArray(articlesToShow) ? articlesToShow.map((article) => (
                                 <tr key={article.id}>
                                     <td className="px-4 py-3 font-medium text-gray-900 truncate max-w-xs" title={article.title}>{article.title}</td>
                                     {isAdmin && <td className="px-4 py-3 text-gray-500">{article.author?.name || 'N/A'}</td>}
@@ -177,12 +177,12 @@ export default function ArticlesPage() {
                                         </div>
                                     </td>
                                 </tr>
-                            ))}
+                            )) : null}
                         </tbody>
                     </table>
                     {/* Tampilan Kartu untuk Mobile */}
                     <div className="md:hidden">
-                        {articlesToShow.map((article) => (
+                        {Array.isArray(articlesToShow) ? articlesToShow.map((article) => (
                             <div key={article.id} className="border-b border-gray-200 p-4 space-y-3">
                                 <div className="font-bold text-gray-900">{article.title}</div>
                                 <div className="flex items-center justify-between text-xs text-gray-500">
@@ -206,7 +206,7 @@ export default function ArticlesPage() {
                                     {isAdmin && <button onClick={() => handleDelete(article.id)} className="flex-1 bg-red-50 text-red-700 hover:bg-red-100 text-center py-2 px-3 rounded-md text-sm font-medium">Hapus</button>}
                                 </div>
                             </div>
-                        ))}
+                        )) : null}
                     </div>
                 </div>
             )}

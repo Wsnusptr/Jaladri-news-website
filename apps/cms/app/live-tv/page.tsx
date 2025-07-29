@@ -38,7 +38,7 @@ export default function LiveTVPage() {
       }
       const data = await response.json();
       setLiveStreams(data);
-      
+
       // Find active stream
       const active = data.find((stream: LiveTV) => stream.isActive);
       setActiveStream(active || null);
@@ -137,7 +137,7 @@ export default function LiveTVPage() {
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
       /youtube\.com\/v\/([^&\n?#]+)/,
     ];
-    
+
     for (const pattern of patterns) {
       const match = url.match(pattern);
       if (match) return match[1];
@@ -193,7 +193,7 @@ export default function LiveTVPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-800 mb-2">Live TV Management</h1>
         <p className="text-gray-600">Kelola siaran langsung yang akan ditampilkan di website</p>
-        
+
         {/* Active Stream Indicator */}
         {activeStream && (
           <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -282,7 +282,7 @@ export default function LiveTVPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Live Chat */}
             <div>
               <LiveTVComments liveTVId={activeStream.id} isAdmin={true} />
@@ -296,14 +296,14 @@ export default function LiveTVPage() {
         <div className="px-6 py-4 border-b border-gray-200">
           <h2 className="text-xl font-semibold">Daftar Siaran Langsung</h2>
         </div>
-        
-        {liveStreams.length === 0 ? (
+
+        {Array.isArray(liveStreams) && liveStreams.length === 0 ? (
           <div className="p-6 text-center text-gray-500">
             Belum ada siaran langsung yang dibuat
           </div>
         ) : (
           <div className="divide-y divide-gray-200">
-            {liveStreams.map((stream) => (
+            {Array.isArray(liveStreams) ? liveStreams.map((stream) => (
               <div key={stream.id} className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -312,12 +312,11 @@ export default function LiveTVPage() {
                     </h3>
                     <div className="text-sm text-gray-500 space-y-1">
                       <p>Dibuat: {new Date(stream.createdAt).toLocaleString('id-ID')}</p>
-                      <p>Status: 
-                        <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${
-                          stream.isActive 
-                            ? 'bg-green-100 text-green-800' 
+                      <p>Status:
+                        <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${stream.isActive
+                            ? 'bg-green-100 text-green-800'
                             : 'bg-gray-100 text-gray-600'
-                        }`}>
+                          }`}>
                           {stream.isActive ? '🔴 LIVE' : '⚫ OFFLINE'}
                         </span>
                       </p>
@@ -332,11 +331,10 @@ export default function LiveTVPage() {
                   <div className="flex items-center space-x-3 ml-4">
                     <button
                       onClick={() => handleToggleActive(stream.id, stream.isActive)}
-                      className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
-                        stream.isActive
+                      className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${stream.isActive
                           ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
                           : 'bg-green-100 text-green-800 hover:bg-green-200'
-                      }`}
+                        }`}
                     >
                       {stream.isActive ? 'Stop' : 'Start'}
                     </button>
@@ -349,7 +347,7 @@ export default function LiveTVPage() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : null}
           </div>
         )}
       </div>
