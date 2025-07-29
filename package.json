@@ -32,10 +32,7 @@
     "turbo": "latest",
     "typescript": "^5.8.3"
   },
-  "dependencies": {
-    "next": "15.4.4",
-    "pg": "^8.16.3"
-  },
+  "dependencies": {},
   "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18.0.0",
