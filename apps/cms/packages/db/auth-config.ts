@@ -7,7 +7,7 @@ import { prisma } from "./index";
 
 // This is the base config shared by both apps
 export const baseAuthOptions: Omit<NextAuthConfig, "pages"> = {
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter({ client: prisma }),
     session: { strategy: "jwt" },
     providers: [
         CredentialsProvider({
