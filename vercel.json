@@ -1,7 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "pnpm prisma:generate && pnpm build:web",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm vercel-build",
+  "installCommand": "pnpm install",
   "framework": "nextjs",
-  "outputDirectory": "apps/web/.next"
+  "outputDirectory": "apps/web/.next",
+  "env": {
+    "DATABASE_URL": "@database-url",
+    "NEXTAUTH_SECRET": "@nextauth-secret",
+    "NEXTAUTH_URL": "@nextauth-url",
+    "NODE_ENV": "production"
+  }
 }
