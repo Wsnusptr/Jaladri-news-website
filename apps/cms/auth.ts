@@ -5,9 +5,9 @@ import type { NextAuthConfig } from "next-auth"
 
 const authOptions = {
   ...baseAuthOptions,
-  pages: { 
+  pages: {
     signIn: "/login",
-    error: "/unauthorized" 
+    error: "/unauthorized"
   },
 } as NextAuthConfig
 
