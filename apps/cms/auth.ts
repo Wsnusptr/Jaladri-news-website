@@ -1,6 +1,6 @@
 // apps/cms/auth.ts
 import NextAuth from "next-auth"
-import { baseAuthOptions } from "@repo/db/auth-config"
+import { baseAuthOptions } from "./auth-config"
 import type { NextAuthConfig } from "next-auth"
 
 const authOptions = {
