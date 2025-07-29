@@ -31,9 +31,8 @@
     "tailwindcss": "^3.4.6",
     "autoprefixer": "^10.4.19",
     "prisma": "^6.12.0",
-    "@prisma/client": "^6.12.0",
-    "next/image": "*",
-    "next/navigation": "*"
+    "@prisma/client": "^6.12.0"
+
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
