@@ -34,6 +34,7 @@
   },
   "dependencies": {},
   "pg": "^8.16.3",
+  "@types/pg": "^8.6.6",
   "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18.0.0",
