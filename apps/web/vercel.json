@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "buildCommand": "cd ../.. && pnpm prisma:generate && pnpm build:web",
+    "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+    "framework": "nextjs",
+    "functions": {
+        "app/api/**/*.ts": {
+            "maxDuration": 30
+        }
+    }
+}
