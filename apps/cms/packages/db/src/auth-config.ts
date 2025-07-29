@@ -5,8 +5,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 const prisma = new PrismaClient();
 
 export const authOptions: NextAuthConfig = {
-  adapter: PrismaAdapter(prisma),
-  providers: [],
+adapter: PrismaAdapter({ client: prisma }),  providers: [],
   callbacks: {
     async session({ session, user }: { session: any, user: any }) {
       return {
