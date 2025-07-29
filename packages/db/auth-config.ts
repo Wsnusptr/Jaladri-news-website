@@ -12,7 +12,7 @@ export const baseAuthOptions: Omit<NextAuthConfig, "pages"> = {
     providers: [
         CredentialsProvider({
             name: "credentials",
-            async authorize(credentials) {
+            async authorize(credentials: Record<string, unknown> | undefined) {
                 if (!credentials?.email || !credentials.password) return null;
 
                 const user = await prisma.user.findUnique({
@@ -21,6 +21,9 @@ export const baseAuthOptions: Omit<NextAuthConfig, "pages"> = {
                 });
 
                 if (!user || !user.password) return null;
+
+                // Hanya izinkan login untuk role ADMIN
+                if (user.role !== "ADMIN") return null;
 
                 const isPasswordValid = await bcrypt.compare(
                     credentials.password as string,
@@ -34,14 +37,14 @@ export const baseAuthOptions: Omit<NextAuthConfig, "pages"> = {
         }),
     ],
     callbacks: {
-        jwt({ token, user }) {
+        jwt({ token, user }: { token: any; user?: any }) {
             if (user) {
                 token.id = user.id!;
                 token.role = (user as any).role;
             }
             return token;
         },
-        session({ session, token }) {
+        session({ session, token }: { session: any; token: any }) {
             if (session.user && token.sub) {
                 session.user.id = token.sub;
                 session.user.role = token.role as Role;

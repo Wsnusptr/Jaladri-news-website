@@ -16,7 +16,7 @@ interface LiveTVStream {
 
 async function getActiveLiveStream(): Promise<LiveTVStream | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3000'}/api/live-tv/active`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WEB_URL || 'web-sage-rho-41.vercel.app'}/api/live-tv/active`, {
       cache: 'no-store',
     });
     

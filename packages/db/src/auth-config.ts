@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthConfig } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
  
 const prisma = new PrismaClient();

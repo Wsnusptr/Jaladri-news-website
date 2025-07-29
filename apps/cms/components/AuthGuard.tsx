@@ -20,7 +20,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
       // Redirect to the main web app's login page
       // Assuming the web app is hosted at the root or a known path
       // You might need to adjust this URL based on your deployment
-      router.push('http://localhost:3000/login'); // Example: Redirect to web app's login
+      router.push('web-sage-rho-41.vercel.app/login'); // Example: Redirect to web app's login
     }
   }, [session, status, router]);
 

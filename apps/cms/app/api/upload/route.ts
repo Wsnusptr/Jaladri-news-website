@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Get the web app URL - fallback to localhost for development
-const WEB_APP_URL = process.env.WEB_APP_URL || 'http://localhost:3000';
+const WEB_APP_URL = process.env.WEB_APP_URL || 'web-sage-rho-41.vercel.app';
 
 export async function POST(request: NextRequest) {
   try {

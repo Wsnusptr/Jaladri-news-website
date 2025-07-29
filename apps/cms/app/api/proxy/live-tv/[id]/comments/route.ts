@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
-const WEB_API_URL = process.env.WEB_API_URL || 'http://localhost:3000/api';
+const WEB_API_URL = process.env.WEB_API_URL || 'web-sage-rho-41.vercel.app/api';
 
 export async function GET(
   request: NextRequest,
