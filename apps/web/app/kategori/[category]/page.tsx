@@ -56,6 +56,8 @@ interface CategoryPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const { category } = await params;
   const { page = '1' } = await searchParams;
@@ -103,12 +105,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   );
 }
 
-// Generate static paths for common categories
-export async function generateStaticParams() {
-  return Object.keys(categoryMappings).map((category) => ({
-    category: category,
-  }));
-}
+// SSR only: static params dihapus agar tidak SSG
 
 // Generate metadata
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {

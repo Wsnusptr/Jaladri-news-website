@@ -15,12 +15,12 @@ interface CategoryViewProps {
   totalArticles: number;
 }
 
-export function CategoryView({ 
-  category, 
-  articles, 
-  currentPage, 
-  totalPages, 
-  totalArticles 
+export function CategoryView({
+  category,
+  articles,
+  currentPage,
+  totalPages,
+  totalArticles
 }: CategoryViewProps) {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [loading, setLoading] = useState(false);
@@ -72,26 +72,24 @@ export function CategoryView({
               Menampilkan {articles.length} dari {totalArticles} artikel
             </span>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600 dark:text-gray-400">Tampilan:</span>
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-colors ${
-                viewMode === 'grid'
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'grid'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-              }`}
+                }`}
             >
               <Grid className="w-4 h-4" />
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-colors ${
-                viewMode === 'list'
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'list'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-              }`}
+                }`}
             >
               <List className="w-4 h-4" />
             </button>
@@ -138,7 +136,7 @@ export function CategoryView({
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              
+
               {[...Array(totalPages)].map((_, index) => {
                 const page = index + 1;
                 const isActive = page === currentPage;
@@ -146,17 +144,16 @@ export function CategoryView({
                   <button
                     key={page}
                     onClick={() => handlePageChange(page)}
-                    className={`px-4 py-2 rounded-lg transition-colors ${
-                      isActive
+                    className={`px-4 py-2 rounded-lg transition-colors ${isActive
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
+                      }`}
                   >
                     {page}
                   </button>
                 );
               })}
-              
+
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
@@ -184,7 +181,7 @@ function ArticleCard({ article, viewMode }: { article: ArticleWithRelations; vie
 
   if (viewMode === 'list') {
     return (
-      <Link href={`/news/${article.id}`}>
+      <Link href={`/news/${article.slug}`}>
         <div className="flex gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm dark:shadow-gray-700 border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-gray-600 transition-all duration-200">
           <div className="relative w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden">
             <Image
@@ -222,7 +219,7 @@ function ArticleCard({ article, viewMode }: { article: ArticleWithRelations; vie
   }
 
   return (
-    <Link href={`/news/${article.id}`}>
+    <Link href={`/news/${article.slug}`}>
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm dark:shadow-gray-700 border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-gray-600 transition-all duration-200 overflow-hidden">
         <div className="relative h-48 w-full">
           <Image

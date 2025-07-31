@@ -146,7 +146,7 @@ export function Footer() {
             {/* Other Columns */}
             <LinkColumn title="Layanan" links={footerLinkColumns.layanan} />
             <LinkColumn title="Informasi" links={footerLinkColumns.informasi} />
-            <LinkColumn title="Edge Network" links={footerLinkColumns.jaringanMedia} />
+            <LinkColumn title="Jaladri Network" links={footerLinkColumns.jaringanMedia} />
           </div>
 
           {/* Bottom Section */}

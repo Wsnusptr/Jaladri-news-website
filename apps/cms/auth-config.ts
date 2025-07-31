@@ -1,7 +1,4 @@
-// Dummy config, ganti dengan isi asli dari packages/db/auth-config.ts
-export const baseAuthOptions = {
-    // ...isi konfigurasi asli di sini...
-};
+import { cmsAuthOptions } from '@repo/db/auth-config';
 
-const authConfig = {};
+const authConfig = cmsAuthOptions;
 export default authConfig;

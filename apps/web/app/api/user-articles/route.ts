@@ -18,12 +18,24 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Generate slug from title
-    const slug = title
+    // Generate slug from title with better handling for Indonesian characters
+    const baseSlug = title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
       .trim()
-      .replace(/\s+/g, "-");
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    // Ensure slug is unique
+    let slug = baseSlug;
+    let counter = 1;
+    while (true) {
+      const existingArticle = await prisma.article.findUnique({ where: { slug } });
+      if (!existingArticle) break;
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
 
     // Check if category exists (convert to lowercase for slug matching)
     const categorySlug = category.toLowerCase();

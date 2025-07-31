@@ -11,7 +11,7 @@ interface HeroSectionProps {
 export function HeroSection({ article }: HeroSectionProps) {
   return (
     <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-      <Link href={article.url || `/news/${article.id}`} className="group relative block w-full h-96">
+      <Link href={article.url || `/news/${article.slug}`} className="group relative block w-full h-96">
         {/* Gambar Latar */}
         <Image
           src={article.imageUrl}

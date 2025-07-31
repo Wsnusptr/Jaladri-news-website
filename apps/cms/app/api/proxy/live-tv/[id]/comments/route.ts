@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 
-const WEB_API_URL = process.env.WEB_API_URL || 'web-sage-rho-41.vercel.app/api';
+const WEB_API_URL = process.env.WEB_APP_URL || 'https://web-sage-rho-41.vercel.app';
 
 export async function GET(
   request: NextRequest,
@@ -14,7 +14,7 @@ export async function GET(
     }
 
     const { id } = await params;
-    const response = await fetch(`${WEB_API_URL}/live-tv/${id}/comments`);
+    const response = await fetch(`${WEB_API_URL}/api/live-tv/${id}/comments`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch comments');
@@ -52,7 +52,7 @@ export async function POST(
     const body = await request.json();
 
     // Forward the request to the web API with session info
-    const response = await fetch(`${WEB_API_URL}/live-tv/${id}/comments`, {
+    const response = await fetch(`${WEB_API_URL}/api/live-tv/${id}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

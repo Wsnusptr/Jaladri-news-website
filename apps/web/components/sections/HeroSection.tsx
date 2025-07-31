@@ -23,7 +23,7 @@ export function HeroSection({ featuredArticles, headlineArticle }: HeroSectionPr
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Main headline */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-7 xl:col-span-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
@@ -34,9 +34,9 @@ export function HeroSection({ featuredArticles, headlineArticle }: HeroSectionPr
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
 
                 {(headlineArticle.imageUrl || headlineArticle.coverImage) && (
-                <img
-                src={headlineArticle.imageUrl || headlineArticle.coverImage || ''}
-                    alt={headlineArticle.title} 
+                  <img
+                    src={headlineArticle.imageUrl || headlineArticle.coverImage || ''}
+                    alt={headlineArticle.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 )}
@@ -71,7 +71,7 @@ export function HeroSection({ featuredArticles, headlineArticle }: HeroSectionPr
                   </div>
                 </div>
 
-                <a href={headlineArticle.url || `/news/${headlineArticle.id}`} className="absolute inset-0 z-30">
+                <a href={headlineArticle.url || `/news/${headlineArticle.slug}`} className="absolute inset-0 z-30">
                   <span className="sr-only">Read article: {headlineArticle.title}</span>
                 </a>
               </div>
@@ -81,7 +81,7 @@ export function HeroSection({ featuredArticles, headlineArticle }: HeroSectionPr
           </motion.div>
 
           {/* News slider */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-5 xl:col-span-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
@@ -92,9 +92,9 @@ export function HeroSection({ featuredArticles, headlineArticle }: HeroSectionPr
                 <h2 className="font-bold text-xl text-gray-900 dark:text-white">Hot News</h2>
               </div>
 
-              <HotNewsSlider 
-                articles={featuredArticles} 
-                variant="large" 
+              <HotNewsSlider
+                articles={featuredArticles}
+                variant="large"
                 effect="fade"
                 className="h-[420px]"
               />

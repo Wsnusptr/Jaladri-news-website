@@ -5,14 +5,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArticleForm } from '../../../../../web/components/shared/ArticleForm';
+import { ArticleForm } from '../../../../components/ArticleForm';
 import { Article } from '@repo/db';
 
 export default function EditArticlePage() {
   const router = useRouter();
   const params = useParams();
   const id = params.id as string;
-  
+
   const [initialData, setInitialData] = useState<Partial<Article> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -48,7 +48,7 @@ export default function EditArticlePage() {
     alert('Artikel berhasil diperbarui!');
     router.push('/articles');
   };
-  
+
   if (isLoading) return <div className="text-center p-10">Memuat data...</div>;
   if (error) return <div className="text-center p-10 text-red-600">{error}</div>;
 
@@ -59,10 +59,10 @@ export default function EditArticlePage() {
         <Link href="/articles" className="text-sm text-blue-600 hover:underline">&larr; Kembali</Link>
       </div>
       {initialData && (
-        <ArticleForm 
-          onSubmit={handleSubmit} 
-          initialData={initialData} 
-          buttonText="Simpan Perubahan" 
+        <ArticleForm
+          onSubmit={handleSubmit}
+          initialData={initialData}
+          buttonText="Simpan Perubahan"
         />
       )}
     </div>

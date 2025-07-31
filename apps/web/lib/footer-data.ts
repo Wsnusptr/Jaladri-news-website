@@ -14,11 +14,12 @@ export const socialLinks = [
 
 export const footerLinkColumns = {
   kategori: [
-    { label: 'Politik', href: '/category/politics' },
-    { label: 'Bisnis', href: '/category/business' },
-    { label: 'Teknologi', href: '/category/technology' },
-    { label: 'Olahraga', href: '/category/sports' },
-    { label: 'Hiburan', href: '/category/entertainment' },
+    // PERBAIKAN: Menyesuaikan href dengan slug dari database
+    { label: 'Politik', href: '/category/politik' },
+    { label: 'Ekonomi', href: '/category/ekonomi' },
+    { label: 'Teknologi', href: '/category/teknologi' },
+    { label: 'Olahraga', href: '/category/olahraga' },
+    { label: 'Video', href: '/category/video' },
   ],
   layanan: [
     { label: 'Berlangganan', href: '/subscribe' },
@@ -31,7 +32,8 @@ export const footerLinkColumns = {
     { label: 'Redaksi', href: '/editorial' },
   ],
   jaringanMedia: [
-    { label: 'Edge Network', href: 'https://edgenetwork.com' },
-    { label: 'Edge Blog', href: 'https://blog.edgenetwork.com' },
+    // PERBAIKAN: Mengganti nama sesuai permintaan
+    { label: 'Jaladri Network', href: '#' },
+    { label: 'Jaladri Media', href: '#' },
   ]
 };

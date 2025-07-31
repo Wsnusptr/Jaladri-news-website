@@ -7,8 +7,9 @@ const authOptions = {
   ...authConfig,
   pages: {
     signIn: "/login",
-    error: "/unauthorized"
+    error: "/login?error=Configuration"
   },
+  debug: process.env.NODE_ENV === 'development',
 } as NextAuthConfig
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions)

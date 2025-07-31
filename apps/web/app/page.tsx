@@ -20,7 +20,7 @@ type ArticleWithRelations = Prisma.ArticleGetPayload<{
 }>;
 // Helper untuk menambahkan properti frontend
 const processArticles = (articles: ArticleWithRelations[]) => {
-  return articles.map(article => {    
+  return articles.map(article => {
     // Ambil kategori pertama jika ada, atau gunakan default
     const categoryName = article.categories && article.categories.length > 0
       ? article.categories[0].name
@@ -28,7 +28,8 @@ const processArticles = (articles: ArticleWithRelations[]) => {
 
     return {
       ...article,
-      url: `/news/${article.id}`,
+      // PERBAIKAN: Gunakan slug untuk URL agar sesuai dengan halaman detail
+      url: `/news/${article.slug}`,
       timestamp: new Date(article.createdAt).toLocaleDateString('id-ID', { day: '2-digit', month: 'long' }),
       categoryNameColor: 'text-blue-600',
       categoryColor: 'text-blue-600', // Add missing categoryColor property
@@ -61,6 +62,8 @@ const convertToLegacyArticle = (article: any): LegacyArticle => {
     } : undefined
   };
 };
+
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   // Ambil semua jenis data dari database secara bersamaan
@@ -107,9 +110,9 @@ export default async function HomePage() {
         {/* Hero Section */}
         {processedMain.length > 0 && (
           <div className="mb-12 animate-slide-up">
-            <HeroSection 
-              featuredArticles={processedMain.slice(1, 4).map(convertToLegacyArticle)} 
-              headlineArticle={convertToLegacyArticle(processedMain[0])} 
+            <HeroSection
+              featuredArticles={processedMain.slice(1, 4).map(convertToLegacyArticle)}
+              headlineArticle={convertToLegacyArticle(processedMain[0])}
             />
           </div>
         )}
@@ -214,7 +217,7 @@ export default async function HomePage() {
             <section className="animate-slide-up" style={{ animationDelay: '1000ms' }}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-1 h-8 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">EdgeNetwork</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Jaladri Network</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {processedNetwork.map((article, index) => (

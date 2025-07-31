@@ -37,7 +37,7 @@ export async function PopularNewsWidget() {
             <li key={item.id} className="flex items-start space-x-4 py-3 border-b border-gray-100 dark:border-gray-700 last:border-b-0">
               <span className="text-3xl font-bold text-gray-300 dark:text-gray-600">#{index + 1}</span>
               <div>
-                <Link href={`/news/${item.id}`} className="font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href={`/news/${item.slug}`} className="font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   {item.title}
                 </Link>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -50,9 +50,9 @@ export async function PopularNewsWidget() {
           ))}
         </ul>
         <div className="pt-4 text-center">
-           <Link href="/terpopuler" className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-              Lihat Selengkapnya →
-           </Link>
+          <Link href="/terpopuler" className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+            Lihat Selengkapnya →
+          </Link>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['@repo/db', 'ui'],
-  
+
   // Fix for Windows generateBuildId crypto issue
   generateBuildId: async () => {
     if (process.env.NODE_ENV === 'production') {
@@ -13,9 +13,13 @@ const nextConfig = {
     return Date.now().toString();
   },
 
-  // Menggunakan port yang berbeda untuk CMS
-  serverRuntimeConfig: {
-    port: 3001
+  // Environment variables
+  env: {
+    DATABASE_URL: process.env.DATABASE_URL,
+    DIRECT_URL: process.env.DIRECT_URL,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    WEB_APP_URL: process.env.WEB_APP_URL,
   },
 
   // Konfigurasi CORS untuk API routes

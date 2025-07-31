@@ -34,7 +34,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
     if (session?.user?.id) {
       fetchNotifications();
       fetchUnreadCount();
-      
+
       // Poll for new notifications every 30 seconds
       const interval = setInterval(fetchUnreadCount, 30000);
       return () => clearInterval(interval);
@@ -43,7 +43,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
 
   const fetchNotifications = async () => {
     if (!session?.user?.id) return;
-    
+
     try {
       const response = await fetch('/api/notifications');
       if (response.ok) {
@@ -57,7 +57,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
 
   const fetchUnreadCount = async () => {
     if (!session?.user?.id) return;
-    
+
     try {
       const response = await fetch('/api/notifications?unread=true');
       if (response.ok) {
@@ -74,9 +74,9 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
       const response = await fetch(`/api/notifications/${notificationId}`, {
         method: 'PATCH',
       });
-      
+
       if (response.ok) {
-        setNotifications(prev => 
+        setNotifications(prev =>
           prev.map(n => n.id === notificationId ? { ...n, isRead: true } : n)
         );
         setUnreadCount(prev => Math.max(0, prev - 1));
@@ -94,7 +94,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'mark_all_read' }),
       });
-      
+
       if (response.ok) {
         setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
         setUnreadCount(0);
@@ -111,7 +111,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
       const response = await fetch(`/api/notifications/${notificationId}`, {
         method: 'DELETE',
       });
-      
+
       if (response.ok) {
         setNotifications(prev => prev.filter(n => n.id !== notificationId));
         const notification = notifications.find(n => n.id === notificationId);
@@ -143,7 +143,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
     const date = new Date(dateString);
     const now = new Date();
     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
-    
+
     if (diffInHours < 1) {
       return 'Baru saja';
     } else if (diffInHours < 24) {
@@ -217,9 +217,8 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
                 notifications.map((notification) => (
                   <div
                     key={notification.id}
-                    className={`p-4 border-b border-gray-200 dark:border-gray-700 last:border-b-0 ${
-                      !notification.isRead ? 'bg-blue-50 dark:bg-blue-900/10' : ''
-                    }`}
+                    className={`p-4 border-b border-gray-200 dark:border-gray-700 last:border-b-0 ${!notification.isRead ? 'bg-blue-50 dark:bg-blue-900/10' : ''
+                      }`}
                   >
                     <div className="flex items-start gap-3">
                       {getNotificationIcon(notification.type)}
@@ -234,7 +233,7 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
                             </p>
                             {notification.article && (
                               <Link
-                                href={`/news/${notification.article.id}`}
+                                href={`/news/${notification.article.slug}`}
                                 className="text-xs text-blue-600 dark:text-blue-400 hover:underline mt-2 inline-block"
                               >
                                 Lihat artikel →
@@ -283,10 +282,10 @@ export function NotificationCenter({ className = '' }: NotificationCenterProps) 
               </div>
             )}
           </div>
-          
+
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 z-40" 
+          <div
+            className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
           />
         </>

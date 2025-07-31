@@ -267,7 +267,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               <NavSection title="News Categories" links={newsCategories} onLinkClick={onClose} />
               <NavSection title="Regional" links={regionalNews} onLinkClick={onClose} />
               <NavSection title="Services" links={services} onLinkClick={onClose} />
-              <NavSection title="Edge Network" links={network} onLinkClick={onClose} />
+              <NavSection title="Jaladri Network" links={network} onLinkClick={onClose} />
             </div>
           </motion.nav>
         </>

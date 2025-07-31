@@ -30,7 +30,8 @@ function LoginForm() {
 
       if (result?.error) {
         // Tampilkan pesan error dari NextAuth jika tersedia
-        setError(result.error || "Email atau password salah. Pastikan Anda adalah Admin.");
+        console.error("Login error from NextAuth:", result.error);
+        setError("Email atau password salah. Pastikan Anda adalah Admin.");
         setIsLoading(false);
         return;
       }

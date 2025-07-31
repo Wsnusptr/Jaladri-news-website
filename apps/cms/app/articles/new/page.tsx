@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import { ArticleForm } from '../../../../web/components/shared/ArticleForm';
+import { ArticleForm } from '../../../components/ArticleForm';
 
 export default function NewArticlePage() {
   const router = useRouter();

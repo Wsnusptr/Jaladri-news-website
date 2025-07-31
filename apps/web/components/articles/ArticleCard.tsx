@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import Image from 'next/image'; 
+import Image from 'next/image';
 import { Article } from '@/lib/article-data';
 import { motion } from 'framer-motion';
 import { Clock, Eye, Share2 } from 'lucide-react';
@@ -13,7 +13,8 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, variant = 'vertical', size = 'normal' }: ArticleCardProps) {
-  const articleUrl = `/news/${article.id}`;
+  // Use slug for URL - all articles should have slug
+  const articleUrl = `/news/${article.slug}`;
 
   return (
     <motion.div
@@ -137,16 +138,16 @@ export function ArticleCard({ article, variant = 'vertical', size = 'normal' }: 
                 </p>
               )}
 
-                <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
-                  <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                    <Clock className="w-3 h-3" />
-                    <span>{article.timestamp}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                    <Eye className="w-3 h-3" />
-                    <span>1234</span> {/* Ganti Math.random() dengan angka statis */}
-                  </div>
+              <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-200/50 dark:border-gray-700/50">
+                <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                  <Clock className="w-3 h-3" />
+                  <span>{article.timestamp}</span>
                 </div>
+                <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                  <Eye className="w-3 h-3" />
+                  <span>1234</span> {/* Ganti Math.random() dengan angka statis */}
+                </div>
+              </div>
             </div>
           </article>
         </Link>

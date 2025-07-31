@@ -4,7 +4,8 @@ import {
   Flame, Newspaper, Tv, Gamepad2, Car, UtensilsCrossed, Briefcase, HeartPulse,
   ShoppingBag, Camera, GraduationCap, Building2, Drama, Anchor,
   Landmark, Plane, Home, Users, Clapperboard, Award, Handshake, Link,
-  LogIn, UserPlus
+  LogIn, UserPlus,
+  Cpu
 } from 'lucide-react';
 
 // Anda bisa mengganti 'any' dengan tipe ikon yang lebih spesifik jika perlu
@@ -27,32 +28,28 @@ export const authLinks: NavLink[] = [
   { label: 'Daftar MPC', href: '/register', icon: UserPlus },
 ];
 
+// Kategori berita disinkronkan dengan slug dari database
+// URL diarahkan ke /category/[slug]
 export const newsCategories: NavLink[] = [
-  { label: 'JaladriNews', href: '/news', icon: Newspaper },
-  { label: 'Sosial', href: '/finance', icon: Landmark },
-  { label: 'Budaya', href: '/inet', icon: Link },
-  { label: 'SosPol', href: '/hot', icon: Flame },
-  { label: 'Hukum', href: '/sport', icon: Gamepad2 },
-  { label: 'Ekonomi', href: '/sepakbola', icon: Anchor },
-  { label: 'Lingkungan', href: '/oto', icon: Car },
-  { label: 'Olahraga', href: '/travel', icon: Plane },
-  { label: 'Kuliner', href: '/food', icon: UtensilsCrossed },
-  { label: 'Pendidikan', href: '/health', icon: HeartPulse },
-  { label: 'Kesehatan', href: '/wolipop', icon: ShoppingBag },
-  { label: 'Properti', href: '/Jaladri-x', icon: Clapperboard },
-  { label: 'Busines', href: '/20Jaladri', icon: Tv },
+  { label: 'Berita', href: '/category/berita', icon: Newspaper },
+  { label: 'Teknologi', href: '/category/teknologi', icon: Cpu }, // Mengganti ikon
+  { label: 'Olahraga', href: '/category/olahraga', icon: Gamepad2 },
+  { label: 'Politik', href: '/category/politik', icon: Landmark },
+  { label: 'Ekonomi', href: '/category/ekonomi', icon: Briefcase },
+  { label: 'Video', href: '/category/video', icon: Clapperboard },
+  // Tambahkan kategori lain seperti Lifestyle jika sudah ada di DB
 ];
 
 export const regionalNews: NavLink[] = [
-    { label: 'JaladriJateng', href: '/jateng', icon: Landmark },
-    { label: 'JaladriJatim', href: '/jatim', icon: Landmark },
-    { label: 'JaladriJabar', href: '/jabar', icon: Landmark },
-    { label: 'JaladriSulsel', href: '/sulsel', icon: Landmark },
-    { label: 'JaladriSumut', href: '/sumut', icon: Landmark },
-    { label: 'JaladriBali', href: '/bali', icon: Landmark },
-    { label: 'JaladriSumbagsel', href: '/sumbagsel', icon: Landmark },
-    { label: 'JaladriJogja', href: '/jogja', icon: Landmark },
-    { label: 'JaladriKalimantan', href: '/kalimantan', icon: Landmark, isNew: true },
+  { label: 'JaladriJateng', href: '/jateng', icon: Landmark },
+  { label: 'JaladriJatim', href: '/jatim', icon: Landmark },
+  { label: 'JaladriJabar', href: '/jabar', icon: Landmark },
+  { label: 'JaladriSulsel', href: '/sulsel', icon: Landmark },
+  { label: 'JaladriSumut', href: '/sumut', icon: Landmark },
+  { label: 'JaladriBali', href: '/bali', icon: Landmark },
+  { label: 'JaladriSumbagsel', href: '/sumbagsel', icon: Landmark },
+  { label: 'JaladriJogja', href: '/jogja', icon: Landmark },
+  { label: 'JaladriKalimantan', href: '/kalimantan', icon: Landmark, isNew: true },
 ];
 
 export const services: NavLink[] = [
@@ -61,20 +58,20 @@ export const services: NavLink[] = [
 ];
 
 export const network: NavLink[] = [
-  { label: 'JaladriNetwork', href: 'https://www.cnnindonesia.com', icon: Users },
+  { label: 'JaladriNetwork', href: '/category/jaladri-network', icon: Users },
   // ... Tambahkan jaringan lainnya di sini
 ];
 
 export const tertiaryNavLinks = [
-    { label: 'Adsmart', href: '#', hasIndicator: false },
-    { label: 'JaladriX', href: '#', hasIndicator: false },
-    { label: 'Sepakbola', href: '#', hasIndicator: false },
-    { label: 'Hikmah', href: '#', hasIndicator: false },
-    { label: 'Edu', href: '#', hasIndicator: false },
-    { label: 'Properti', href: '#', hasIndicator: false },
-    { label: 'Pop', href: '#', hasIndicator: false },
-    { label: 'JaladriJateng-Jogja Awards 2025', href: '#', hasIndicator: true },
-    { label: 'FYB', href: '#', hasIndicator: false },
-    { label: 'Hoegeng Awards', href: '#', hasIndicator: false },
-    { label: 'Adhyaksa Awards', href: '#', hasIndicator: true },
+  { label: 'Adsmart', href: '#', hasIndicator: false },
+  { label: 'JaladriX', href: '#', hasIndicator: false },
+  { label: 'Sepakbola', href: '#', hasIndicator: false },
+  { label: 'Hikmah', href: '#', hasIndicator: false },
+  { label: 'Edu', href: '#', hasIndicator: false },
+  { label: 'Properti', href: '#', hasIndicator: false },
+  { label: 'Pop', href: '#', hasIndicator: false },
+  { label: 'JaladriJateng-Jogja Awards 2025', href: '#', hasIndicator: true },
+  { label: 'FYB', href: '#', hasIndicator: false },
+  { label: 'Hoegeng Awards', href: '#', hasIndicator: false },
+  { label: 'Adhyaksa Awards', href: '#', hasIndicator: true },
 ];

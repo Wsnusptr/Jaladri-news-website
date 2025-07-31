@@ -23,8 +23,8 @@
       "@/*": [
         "./*"
       ],
-      "@repo/db": [
-        "packages/db"
+      "@repo/db/*": [
+        "../../packages/db/*"
       ],
       "@repo/ui": [
         "packages/ui"
@@ -32,13 +32,19 @@
       "@repo/web": [
         "packages/web"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "types",
-    "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "next-env.d.ts",
+    "types",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -9,12 +9,13 @@
     "./notifications": "./notifications.ts"
   },
   "scripts": {
-    "db:generate": "dotenv -e .env -- prisma generate",
+    "db:generate": "npx prisma generate",
     "db:migrate": "dotenv -e .env -- prisma migrate dev",
     "db:seed": "ts-node seed-direct.ts",
     "db:reset": "dotenv -e .env -- prisma migrate reset"
   },
   "dependencies": {
+    "next": "15.4.4",
     "@auth/prisma-adapter": "^2.10.0",
     "@prisma/client": "^6.12.0",
     "bcryptjs": "^2.4.3",
